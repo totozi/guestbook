@@ -6,10 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 import org.zerock.guestbook.dto.GuestbookDTO;
 import org.zerock.guestbook.dto.PageRequestDTO;
 import org.zerock.guestbook.entity.Guestbook;
 import org.zerock.guestbook.service.GuestbookService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/guestbook")
@@ -44,24 +48,19 @@ public class GuestbookController {
     }
 
     @PostMapping("/modify")
-    public String modify(GuestbookDTO dto
-                       , @ModelAttribute("requestDTO") PageRequestDTO requestDTO
-                       , RedirectAttributes redirectAttributes){
-        log.info("post modify....................");
-        log.info("dto : " + dto);
-
+    public String modify(GuestbookDTO dto, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, RedirectAttributes redirectAttributes) {
         service.modify(dto);
 
-        redirectAttributes.addFlashAttribute("page", requestDTO.getPage());
-        redirectAttributes.addFlashAttribute("gno", dto.getGno());
+        redirectAttributes.addAttribute("page", requestDTO.getPage());
 
-        // TODO  addFlashAttribute 변수를 read 메서드가 받지 못함
-        return "redirect:/guestbook/read?page="+requestDTO.getPage()+"&gno="+dto.getGno();
+        redirectAttributes.addAttribute("gno", dto.getGno());
+        return "redirect:/guestbook/read";
     }
 
     @GetMapping({"/read", "/modify"})
     public void read(long gno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
         log.info("read............");
+        log.info("gno............ : " + gno);
         GuestbookDTO dto = service.read(gno);
         model.addAttribute("dto", dto);
     }
