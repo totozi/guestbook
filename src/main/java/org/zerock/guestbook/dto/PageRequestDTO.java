@@ -14,6 +14,8 @@ public class PageRequestDTO {
 
     private int page;
     private int size;
+    private String type;    // 검색을 위한 변수 추가
+    private String keyword; // 검색을 위한 변수 추가
 
     public PageRequestDTO() {
         this.page = 1;
