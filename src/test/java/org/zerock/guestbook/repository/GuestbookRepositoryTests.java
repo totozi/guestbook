@@ -1,7 +1,6 @@
 package org.zerock.guestbook.repository;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.Query;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.zerock.guestbook.dto.GuestbookDTO;
-import org.zerock.guestbook.dto.PageRequestDTO;
-import org.zerock.guestbook.dto.PageResultDTO;
 import org.zerock.guestbook.entity.Guestbook;
 import org.zerock.guestbook.entity.QGuestbook;
+import org.zerock.guestbook.service.repository.GuestbookRepository;
 
 import java.util.Optional;
 import java.util.stream.IntStream;

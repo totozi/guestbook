@@ -1,4 +1,4 @@
-package org.zerock.guestbook.repository;
+package org.zerock.guestbook.service.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;

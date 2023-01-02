@@ -13,7 +13,7 @@ import org.zerock.guestbook.dto.PageRequestDTO;
 import org.zerock.guestbook.dto.PageResultDTO;
 import org.zerock.guestbook.entity.Guestbook;
 import org.zerock.guestbook.entity.QGuestbook;
-import org.zerock.guestbook.repository.GuestbookRepository;
+import org.zerock.guestbook.service.repository.GuestbookRepository;
 
 import java.util.Optional;
 import java.util.function.Function;
